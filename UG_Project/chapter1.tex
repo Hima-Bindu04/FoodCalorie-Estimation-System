@@ -1,0 +1,36 @@
+\setcounter{equation}{0}
+
+\chapter{Introduction}
+
+\section{Problem Statement}
+\lipsum[1]
+
+\section{Problem Description}
+\lipsum[1]
+
+\section{Significance of the Problem}
+Document clustering seeks to identify groups of documents, from a given text document collection, such that documents in a group are more similar in their theme and documents from different groups are more dissimilar in their meaning.
+
+Due to rapid growth in the usage of internet \cite{warf2020}, the volume of online text without associated class labels; in the form web documents, judicial records, medical health records, operation manuals, research articles, news articles and textbooks is increasing \cite{zhai2016},\cite{bharti2014},\cite{feldman2007},\cite{forman2003}. Text clustering is essential to organize, summarize and to retrieve relevant information automatically from the online text corpora \cite{garcia2020}. 
+
+\section{Challenges in Solving the Problem}
+ 
+Text documents are in unstructured format and are difficult to analyse in their original form. They are to be represented in a structured format for the sake of analysis. Most popular document representation technique is Vector Space Mode(VSM) \cite{zapata2000}. 
+
+There exist complex relationships among terms \cite{zapata2000}. High dimensionality and sparseness of DTM not only increases the time complexity of clustering algorithms but also reduces the clustering performance of the algorithms. 
+
+
+\section{Assumptions and Limitations of the Work}
+The assumptions and limitations of this work are 
+\begin{inparaenum}[\itshape i\upshape)]
+\item The text documents in the collections are written in English language. This is a reasonable assumption as most of the online text available is in English.
+\item Each text document describes a single theme. The documents are assumed to belong to only one category.
+\item Each document has reasonable length. The number of terms in a document is 10 \% more than the number of unique terms in the document.
+\item Each document has reasonable number of unique terms. If the number of unique terms in a document is less than one percentile of unique terms collection of all documents in a text corpus, the document is not considered for clustering. 
+\end{inparaenum}
+
+
+\section{Organization of the Thesis}
+Chapter 2 presents a detailed review of existing solutions for the problem reported in the literature.  Chapter 3 presents details about the proposed solution. Chapter 4 presents the details about the methodology that is followed to do this work. Chapter
+5 presents the details about results obtained and analysis of the results. Chapter 6 provides a
+detailed conclusion of the present work with a description of the scope for future work.

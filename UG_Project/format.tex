@@ -1,0 +1,86 @@
+\usepackage{threeparttable}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{paralist}
+\usepackage[center]{caption,subfigure}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fontspec}
+\usepackage{nomencl}
+\usepackage{etoolbox}
+
+\usepackage{array}
+\usepackage{minted}
+
+\setmainfont{Times New Roman}
+\numberwithin{algorithm}{chapter}
+
+
+\makenomenclature
+
+\renewcommand{\nomname}{}% Nomenclature name
+
+
+
+\renewcommand\nomgroup[1]{%
+  \item[\Large\bfseries
+  \ifstrequal{#1}{N}{List of Symbols}{%
+  \ifstrequal{#1}{A}{List of Abbreviations}{}}%
+]} 
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markright{\chaptername\ \thechapter.\ #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\lhead[\fancyplain{}{}]%
+      {\fancyplain{}{\bfseries\rightmark}}
+\chead[\fancyplain{}{}]%
+      {\fancyplain{}{}}
+\rhead[\fancyplain{}{}]%
+      {\fancyplain{}{\bfseries\thepage}}
+\lfoot[\fancyplain{}{}]%
+      {\fancyplain{}{}}
+\cfoot[\fancyplain{}{}]%
+      {\fancyplain{}{}}
+\rfoot[\fancyplain{}{}]%
+      {\fancyplain{}{}}%\bfseries\today}}
+
+
+\newcounter{ind}
+\def\eqlabon{
+\setcounter{ind}{\value{equation}}\addtocounter{ind}{1}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{\arabic{chapter}%
+         .\arabic{section}.\arabic{ind}\alph{equation}}}
+\def\eqlaboff{
+\renewcommand{\theequation}{\arabic{chapter}%
+         .\arabic{section}.\arabic{equation}}
+\setcounter{equation}{\value{ind}}}
+
+\fancyhf{} % clear all header and footer fields
+%\fancyfoot[L]{Bapatla Engineering College}
+\fancyfoot[C]{\thepage} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}
+\makeatother  
+  
