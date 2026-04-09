@@ -1,0 +1,117 @@
+\chapter{Research Methodology}
+The adopted research methodology comprises three main phases, namely preparation of datasets for conducting experiments, applying the proposed and existing methods to do experiments, and evaluation of different methods.
+
+\setcounter{equation}{0}
+
+\section{Data Collection}
+Table~\ref{tab:dsets} provides the properties of the text corpora considered to evaluate feature selection methods. Documents with multiple class labels are not considered for clustering. The variation in the class distribution of a dataset is expressed using the coefficient of variation \cite{ram2020}. The skewness in the class distribution of a dataset is expressed using the adjusted Fisher-Pearson standardized moment coefficient of skewness \cite{weltman2018},\cite{kovchegov2020}. All classes of Ohsumed dataset have exactly same number of documents (400), so it's coefficient of skewness is not defined (ND). The Sparsity ratio is defined as $1-(nze/n \cdot m)$, where $nze$ is the number of non zero elements in the VSM representation of a dataset.
+
+
+\begin{center}
+\begin{table}
+\begin{threeparttable}
+\caption{Properties of Datasets}
+\label{tab:dsets}
+\begin{tabular}{lrrrrrr}
+\toprule
+\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{Number of} & \multicolumn{2}{c}{Coefficient of} & \multirow{2}{*}{Sparsity ratio}\\
+			\cline{2-6}
+             & documents & features & classes & variation & skewness &   \\
+\midrule
+Reuters\tnote{1}      &  8213	 & 18933 & 	41   & 	3.23  & 4.81  & 0.997  \\     
+Ohsumed\tnote{2}     & 	9200 	 & 13510 &  23   & 	0  	  &  ND   & 0.996  \\     
+Newsgroups\tnote{1}   & 	18846	 & 26214 & 	20	 &  0.10  &-2.39  & 0.997  \\     
+Ohscal\tnote{2}       &  11162	 & 11465 &  10	 &  0.27  & 0.24  & 0.995  \\     
+Sports\tnote{2}       &  8580	 & 14870 & 	 7	 &  1.02  & 1.01  & 0.991  \\     
+Hitech\tnote{2}       &  2301	 & 12940 &   6	 &  0.50  &-0.62  & 0.989  \\     
+Reviews\tnote{2}    	 &  4069	 & 22925 & 	 5	 &  0.64  &-0.43  & 0.992  \\     
+Classic\tnote{2}     &  7095	 & 7747 & 	 4	 &  0.55  & 1.77  & 0.995  \\     
+Webkb\tnote{2}        &  8282	 & 22890 & 	 7	 &  1.06  & 1.74  & 0.996  \\     
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item[1] http://www.becbapatla.ac.in/TextData.html
+\item[2] http://www.textcollections.com
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\end{center}
+
+
+
+
+\section{Clustering}
+\subsection{Motivation for the selection of K-means}
+\begin{inparaenum}[\itshape i\upshape)]
+\item The time complexities of clustering algorithms are given in \cite{xu2015}. K-means algorithm is scalable because its time complexity is $\mathcal{O}(nkum)$. Where $n$ is the number of documents in the text collection, $k$ is the number of classes in the dataset, $u$ is the terminating condition which is the maximum number of iterations allowed and $m$ is the number of dimensions used to represent the text dataset. 
+\item The algorithm is easy to implement. 
+\item The algorithm has known limitations. 
+\item The parameters of the algorithm can be fine tuned easily to improve the performance \cite{franti2018}. The algorithm is vulnerable to outliers because, in addition to its sensitivity to the initial centroids, it can fall in the local regions in
+the search space. To overcome this the algorithm is run multiple times on the dataset with different initial centroids and best performance is reported.
+
+\end{inparaenum}
+ 
+\subsection{Parameters used for K-means}
+
+Initialization method and repetition of K-means algorithm has significant impact on the performance of the clustering algorithm.
+The parameters used for K-means algorithm are shown in Table~\ref{tab:pkmeans}. 
+
+\renewcommand\arraystretch{2} 
+\begin{table} [!h]
+\centering
+\caption{Parameters chosen for K-means clustering algorithm}
+\begin{tabular}{m{7cm}m{7cm}}
+\toprule
+Parameter & Choice \\
+\midrule
+Distance measure, in m-dimensional space, that the algorithm should minimize & cosine \\
+
+Method used to choose initial cluster centroid positions & Perform preliminary clustering phase on random 10\% subsample of dataset. Clustering in this phase is by randomly choosing $k$ objects from the subsample. \\
+
+Number of times the algorithm is repeated, each with a new set of initial centroids & 10 \\
+
+Action to take if any cluster loses all of its member objects & Create a new cluster consisting of the one object furthest from its centroid \\
+
+Maximum number of iterations allowed for optimizing the objective function & 100 \\
+
+\bottomrule
+\end{tabular}
+\label{tab:pkmeans}
+\end{table}
+
+\section{Algorithm in \LaTeX}
+\begin{algorithm}
+\begin{algorithmic}[1]
+\REQUIRE Input array $A$
+\ENSURE Sorted array $A$
+\WHILE{($x<10$)}
+   \STATE $x \gets x-1$
+\ENDWHILE
+
+\STATE Initialize variables
+\FOR{each element $x$ in $A$}
+    \IF{$x$ is out of order}
+        \STATE Swap $x$ with previous element
+    \ENDIF
+\ENDFOR
+\RETURN $A$
+\end{algorithmic}
+\caption{Algorithm example}
+\label{algo:bs}
+\end{algorithm}
+
+\section{Code Snippets}
+
+Here is a Python program:
+
+\begin{minted}{python}
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+print(is_prime(17))
+\end{minted}
